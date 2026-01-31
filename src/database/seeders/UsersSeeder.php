@@ -13,15 +13,39 @@ class UsersSeeder extends Seeder
      */
     public function run(): void
     {
-        User::firstOrCreate(
+        User::updateOrCreate(
             ['email' => 'test@example.com'],
             [
-                'name' => 'Test User',
+                'name' => 'テストユーザー',
                 'password' => bcrypt('password'),
                 'postal_code' => '1234567',
                 'address' => '東京都新宿区1-1-1',
                 'building' => 'テストビル',
-                'remember_token' => Str::random(10),
+                'profile_image' => 'profiles/test.png',
+            ]
+        );
+
+        User::updateOrCreate(
+            ['email' => 'test2@example.com'],
+            [
+                'name' => 'テストユーザー2',
+                'password' => bcrypt('password'),
+                'postal_code' => '9876543',
+                'address' => '大阪府大阪市北区2-2-2',
+                'building' => 'マンション202',
+                'profile_image' => 'profiles/test2.png',
+            ]
+        );
+
+        User::updateOrCreate(
+            ['email' => 'test3@example.com'],
+            [
+                'name' => 'テストユーザー3',
+                'password' => bcrypt('password'),
+                'postal_code' => '1230000',
+                'address' => '大阪府大阪市北区3',
+                'building' => 'マンション303',
+                'profile_image' => 'profiles/test3.png',
             ]
         );
     }

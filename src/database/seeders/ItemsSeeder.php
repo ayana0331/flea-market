@@ -106,14 +106,19 @@ class ItemsSeeder extends Seeder
             ],
         ];
 
-        foreach ($items as $data) {
+        $user1 = \App\Models\User::where('email', 'test@example.com')->first();
+        $user2 = \App\Models\User::where('email', 'test2@example.com')->first();
+
+        foreach ($items as $index => $data) {
+            $ownerId = ($index < 5) ? $user1->id : $user2->id;
+
             $item = Item::create([
-                'user_id' => 1,
-                'name' => $data['name'],
-                'brand' => $data['brand'],
-                'description' => $data['description'],
-                'price' => $data['price'],
-                'image_path' => $data['image_path'],
+                'user_id'      => $ownerId,
+                'name'         => $data['name'],
+                'brand'        => $data['brand'],
+                'description'  => $data['description'],
+                'price'        => $data['price'],
+                'image_path'   => $data['image_path'],
                 'condition_id' => $data['condition_id'],
             ]);
 

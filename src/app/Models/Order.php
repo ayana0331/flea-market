@@ -14,6 +14,7 @@ class Order extends Model
         'item_id',
         'address_id',
         'payment_method',
+        'status',
     ];
 
     public function user()
@@ -24,5 +25,15 @@ class Order extends Model
     public function item()
     {
         return $this->belongsTo(Item::class);
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
+    public function latestMessage()
+    {
+        return $this->hasOne(Message::class)->latestOfMany();
     }
 }

@@ -14,7 +14,7 @@
 
         <div class="icon-upload">
             @if(auth()->user()->profile_image)
-                <img src="{{ asset('storage/profiles/' . auth()->user()->profile_image) }}" alt="ユーザーアイコン" class="user-icon">
+                <img src="{{ asset('storage/' . $user->profile_image) }}" alt="ユーザーアイコン" class="user-icon">
             @else
                 <div class="user-icon-placeholder"></div>
             @endif

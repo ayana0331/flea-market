@@ -13,6 +13,8 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\ReviewController;
 
 
 Route::get('/email/verify', function () {
@@ -74,3 +76,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/purchase/{item}/address', [AddressController::class, 'edit'])->name('address.edit');
     Route::put('/purchase/{item}/address', [AddressController::class, 'update'])->name('address.update');
 });
+
+Route::get('/chat/{order_id}', [ChatController::class, 'index'])->name('chat');
+Route::post('/chat/{order_id}', [ChatController::class, 'store'])->name('chat.store');
+Route::post('/chat/{order_id}/complete', [ChatController::class, 'complete'])->name('order.complete');
+Route::patch('/chat/message/{message_id}', [ChatController::class, 'update'])->name('chat.update');
+Route::delete('/chat/message/{message_id}', [ChatController::class, 'destroy'])->name('chat.destroy');
+
+Route::post('/order/{order}/review', [ReviewController::class, 'store'])->name('review.store');
