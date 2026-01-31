@@ -1,4 +1,4 @@
-# flea-market
+# flea-market　追加機能実装
 
 ## 環境構築
 
@@ -13,6 +13,7 @@
 - php artisan key:generate
 - php artisan migrate
 - php artisan db:seed
+- php artisan storage:link
 
 ### メール送信設定（Mailtrap）
 `.env` ファイルに以下の設定を追加してください。
@@ -20,19 +21,10 @@
 ```bash
 MAIL_MAILER=smtp
 MAIL_HOST=sandbox.mailtrap.io
-MAIL_PORT=2525
+MAIL_PORT=252
 MAIL_USERNAME=あなたのMailtrapユーザー名
 MAIL_PASSWORD=あなたのMailtrapパスワード
 MAIL_ENCRYPTION=null
-```
-
-### Stripeキー設定
-`.env` ファイルに以下の設定を追加してください。
-テスト用キーは Stripe Dashboard から取得してください。
-
-```bash
-STRIPE_KEY=your_stripe_key
-STRIPE_SECRET=your_stripe_secret
 ```
 
 ### 使用技術
@@ -40,7 +32,6 @@ STRIPE_SECRET=your_stripe_secret
 - フレームワーク: Laravel 12.34.0
 - データベース: MySQL 8.0.26
 - 認証: Laravel Fortify
-- 決済: Stripe
 - メール認証: Mailtrap
 
 
@@ -49,10 +40,18 @@ STRIPE_SECRET=your_stripe_secret
 
 
 ## URL (開発環境)
-- トップページ http://localhost/
-- ユーザー登録 http://localhost/register
+- ログイン画面 http://localhost/login
 
 ### テストユーザー
-動作確認用のユーザー
-- email: yamada@example.com
-- password: yamadatest
+動作確認用のユーザー1
+- email: test@example.com
+- password: password
+
+動作確認用のユーザー2
+- email: test2@example.com
+- password: password
+
+動作確認用のユーザー3
+- email: test3@example.com
+- password: password
+取引チャット動作確認のために、ユーザー3に購入済みのダミーデータを入れています。
